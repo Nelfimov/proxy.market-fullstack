@@ -1,9 +1,10 @@
 import { Dispatch } from 'react';
 import { Form } from 'react-bootstrap';
-import { Action } from '../types';
+import { Action, State } from '../types';
 
 interface Props {
   action: Dispatch<Action>;
+  state: State;
 }
 
 export function CalculatorForm(props: Props) {
@@ -43,6 +44,7 @@ export function CalculatorForm(props: Props) {
               payload: e.currentTarget.value,
             })
           }
+          disabled={props.state.type === ''}
         >
           <option value='' disabled>
             Выберите страну
@@ -62,6 +64,7 @@ export function CalculatorForm(props: Props) {
           onChange={(e) =>
             props.action({ type: 'SET_TIME', payload: e.currentTarget.value })
           }
+          disabled={props.state.country === ''}
         >
           <option value='' disabled>
             Выберите срок

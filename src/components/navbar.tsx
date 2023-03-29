@@ -1,11 +1,14 @@
 import { Navbar, Container } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
+import logo from '../assets/logo.svg';
 
 export function NavBar() {
   return (
-    <Navbar bg='light' expand='sm'>
+    <Navbar collapseOnSelect variant='dark' bg='dark' expand='sm'>
       <Container fluid='md'>
-        <Navbar.Brand href='#'>Proxy.Market</Navbar.Brand>
+        <Navbar.Brand href='#'>
+          <img src={logo} alt='logo' />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls='navbar' />
         <Navbar.Collapse className='justify-content-end' id='navbar'>
           <Nav activeKey='/'>
