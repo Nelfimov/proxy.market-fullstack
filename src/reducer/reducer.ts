@@ -17,28 +17,41 @@ const COUNTRY_PRICE: PriceList = {
   AT: 236.0,
 };
 
-function calculate() {}
+function calculate(state: State) {
+  return {
+    total:
+      (TIME_PRICE[state.time] ?? 1) *
+      ((COUNTRY_PRICE[state.country] ?? 0) + (TYPE_PRICE[state.type] ?? 0)),
+  };
+}
 
 export function reducer(state: State, action: Action) {
   switch (action.type) {
     case 'SET_COUNTRY': {
+      state.country = action.payload;
+
       return {
         ...state,
-        country: action.payload,
+        ...calculate(state),
       };
     }
     case 'SET_TIME': {
+      state.time = action.payload;
+
       return {
         ...state,
-        time: action.payload,
+        ...calculate(state),
       };
     }
     case 'SET_TYPE': {
+      state.type = action.payload;
+
       return {
         ...state,
-        type: action.payload,
+        ...calculate(state),
       };
     }
+    default:
+      return state;
   }
-  throw Error('Unknown action type: ' + action.type);
 }

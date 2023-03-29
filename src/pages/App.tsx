@@ -5,14 +5,15 @@ import { reducer } from '../reducer';
 import { State } from '../types';
 
 function App() {
-  const initialState: State = { country: '', time: '', type: '' };
+  const initialState: State = { country: '', time: '', type: '', total: 0 };
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <div className='App'>
       <Container>
-        <CalculatorForm />
+        <CalculatorForm action={dispatch} />
+        <pre>{JSON.stringify(state, undefined, 2)}</pre>
       </Container>
     </div>
   );
