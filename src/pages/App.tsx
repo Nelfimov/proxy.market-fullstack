@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
-import { Card, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import { CalculatorForm, Footer, NavBar } from '../components';
+import { Footer, NavBar } from '../components';
 import { reducer } from '../reducer';
 import { State } from '../types';
 
@@ -13,7 +13,7 @@ export function App() {
   return (
     <>
       <NavBar />
-      <Container>
+      <Container className='mt-4'>
         <Outlet context={[state, dispatch]} />
       </Container>
       <Footer />
