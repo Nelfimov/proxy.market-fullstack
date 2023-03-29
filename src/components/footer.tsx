@@ -2,7 +2,7 @@ import { Container, Nav } from 'react-bootstrap';
 
 export function Footer() {
   return (
-    <Container as='footer' className='bg-secondary text-center' fluid>
+    <Container as='footer' className='bg-secondary text-center mt-4' fluid>
       <Nav className='justify-content-center'>
         <Nav.Item>
           <Nav.Link

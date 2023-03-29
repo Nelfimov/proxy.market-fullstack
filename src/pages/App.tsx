@@ -13,7 +13,7 @@ export function App() {
   return (
     <>
       <NavBar />
-      <Container className='mt-4'>
+      <Container className='mt-4' style={{ minHeight: '77.5vh' }}>
         <Outlet context={[state, dispatch]} />
       </Container>
       <Footer />

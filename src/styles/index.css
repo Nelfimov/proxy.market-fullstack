@@ -1,12 +1,4 @@
-body::after {
-  height: 80px;
-  display: block;
-  content: '';
-}
-
 footer {
-  position: absolute;
-  bottom: 0;
   width: 100vw;
   height: 80px;
 }

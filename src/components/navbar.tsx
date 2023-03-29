@@ -12,12 +12,11 @@ export function NavBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='navbar' />
         <Navbar.Collapse className='justify-content-end' id='navbar'>
-          <Nav activeKey='/'>
+          <Nav activeKey='/' className='align-items-center'>
             <Nav.Item>
               <NavLink to='/' className='nav-link'>
                 Главная
               </NavLink>
-              Главная
             </Nav.Item>
             <Nav.Item>
               <NavLink to='/buy-proxie' className='nav-link'>
