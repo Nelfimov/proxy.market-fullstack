@@ -1,5 +1,6 @@
 import { useReducer } from 'react';
 import { Card, Container } from 'react-bootstrap';
+import { Outlet } from 'react-router-dom';
 import { CalculatorForm, Footer, NavBar } from '../components';
 import { reducer } from '../reducer';
 import { State } from '../types';
@@ -12,20 +13,9 @@ export function App() {
   return (
     <>
       <NavBar />
-      <div className='App'>
-        <Container>
-          <h1>Купить прокси:</h1>
-          <Card>
-            <Card.Header>
-              <h3>Онлайн калькулятор</h3>
-            </Card.Header>
-            <Card.Body>
-              <CalculatorForm action={dispatch} state={state} />
-            </Card.Body>
-          </Card>
-          <pre>{JSON.stringify(state, undefined, 2)}</pre>
-        </Container>
-      </div>
+      <Container>
+        <Outlet context={[state, dispatch]} />
+      </Container>
       <Footer />
     </>
   );

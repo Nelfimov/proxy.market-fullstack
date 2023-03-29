@@ -18,6 +18,11 @@ export function NavBar() {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
+              <Nav.Link eventKey='/buy-proxie' href='/buy-proxie'>
+                Купить прокси
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
               <Nav.Link eventKey='/about' href='/about'>
                 О нас
               </Nav.Link>
