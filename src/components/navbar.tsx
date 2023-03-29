@@ -1,6 +1,7 @@
 import { Navbar, Container } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import logo from '../assets/logo.svg';
+import { NavLink } from 'react-router-dom';
 
 export function NavBar() {
   return (
@@ -13,19 +14,20 @@ export function NavBar() {
         <Navbar.Collapse className='justify-content-end' id='navbar'>
           <Nav activeKey='/'>
             <Nav.Item>
-              <Nav.Link eventKey='/' href='/'>
+              <NavLink to='/' className='nav-link'>
                 Главная
-              </Nav.Link>
+              </NavLink>
+              Главная
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey='/buy-proxie' href='/buy-proxie'>
+              <NavLink to='/buy-proxie' className='nav-link'>
                 Купить прокси
-              </Nav.Link>
+              </NavLink>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey='/about' href='/about'>
+              <NavLink to='/about' className='nav-link'>
                 О нас
-              </Nav.Link>
+              </NavLink>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
