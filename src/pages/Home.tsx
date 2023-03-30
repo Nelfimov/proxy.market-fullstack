@@ -11,22 +11,32 @@ import image from '../assets/background.webp';
 
 export function Home() {
   return (
-    <Col className='justify-content-center'>
-      <Image
-        width='700px'
-        className='self-align-center mx-auto'
-        fluid
-        rounded
-        src={image}
-      />
-      <Row>
-        <Button variant='primary'>
-          <NavLink to='/buy-proxie'>Купить прокси</NavLink>
-        </Button>
-        <Button variant='secondary'>
-          <NavLink to='/contacts'>Контакты</NavLink>
-        </Button>
+    <>
+      <Row sm={2} className='justify-content-center'>
+        <Image
+          // width='700px'
+          className='self-align-center mx-auto'
+          fluid
+          rounded
+          src={image}
+        />
       </Row>
-    </Col>
+      <NavLink
+        to='/buy-proxie'
+        style={{ color: 'white', textDecoration: 'none' }}
+      >
+        <Row sm={2} className='justify-content-center m-1'>
+          <Button variant='primary'>Купить прокси</Button>
+        </Row>
+      </NavLink>
+      <NavLink
+        to='/contacts'
+        style={{ color: 'white', textDecoration: 'none' }}
+      >
+        <Row sm={2} className='justify-content-center m-1'>
+          <Button variant='outline-primary'>Контакты</Button>
+        </Row>
+      </NavLink>
+    </>
   );
 }
