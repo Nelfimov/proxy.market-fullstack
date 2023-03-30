@@ -1,8 +1,7 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { Dispatch, useEffect } from 'react';
 import { Button, Card, Col, Collapse, Row } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import { useOutletContext } from 'react-router-dom';
+import { NavLink, useOutletContext } from 'react-router-dom';
 import { CalculatorForm } from '../components';
 import { db } from '../firebase';
 import {
@@ -22,9 +21,16 @@ export function Product() {
     }>();
 
   useEffect(() => {
-    const result = getDocs(collection(db, 'priceList')).then((res) =>
-      res.forEach((item) => console.log(item.id + item.data()))
-    );
+    getDocs(collection(db, 'priceList'))
+      .then((res) =>
+        res.forEach((item) => {
+          priceListDispatch({
+            type: `SET_${item.id.toUpperCase()}`,
+            payload: item.data(),
+          });
+        })
+      )
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -36,6 +42,7 @@ export function Product() {
         </Card.Header>
         <Card.Body>
           <CalculatorForm action={cartDispatch} state={cartState} />
+          <pre>{JSON.stringify(priceListState, undefined, 2)}</pre>
         </Card.Body>
         <Collapse in={cartState.total > 0}>
           <Card.Footer>
