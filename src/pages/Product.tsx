@@ -81,8 +81,14 @@ export function Product() {
                     style={{ height: '35px' }}
                   />
                 ) : (
-                  <NavLink to='/cart'>
-                    <Button size='lg' style={{ width: '100%' }}>
+                  <NavLink
+                    to={cartState.time === '' ? 'javascript:void(0)' : '/cart'}
+                  >
+                    <Button
+                      size='lg'
+                      style={{ width: '100%' }}
+                      disabled={cartState.time === ''}
+                    >
                       Оформить заказ:
                     </Button>
                   </NavLink>
