@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 import { useOutletContext } from 'react-router-dom';
 import { CalculatorForm } from '../components';
 import { Action, State } from '../types';
