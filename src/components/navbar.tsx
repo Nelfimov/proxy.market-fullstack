@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 export function NavBar() {
   return (
     <Navbar collapseOnSelect variant='dark' bg='dark' expand='sm'>
-      <Container fluid='md'>
+      <Container fluid='lg'>
         <Navbar.Brand href='#'>
           <img src={logo} alt='logo' />
         </Navbar.Brand>
@@ -24,8 +24,8 @@ export function NavBar() {
               </NavLink>
             </Nav.Item>
             <Nav.Item>
-              <NavLink to='/about' className='nav-link'>
-                О нас
+              <NavLink to='/contacts' className='nav-link'>
+                Контакты
               </NavLink>
             </Nav.Item>
           </Nav>

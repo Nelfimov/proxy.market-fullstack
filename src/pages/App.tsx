@@ -13,11 +13,11 @@ export function App() {
   return (
     <>
       <NavBar />
-      <Container className='mt-4' style={{ minHeight: '77.5vh' }}>
-        <div
-          id='transition'
-          className={navigation.state === 'loading' ? 'loading' : ''}
-        />
+      <div
+        id='transition'
+        className={navigation.state === 'loading' ? 'loading' : ''}
+      />
+      <Container fluid='lg' className='mt-4' style={{ minHeight: '77.5vh' }}>
         <Outlet context={[state, dispatch]} />
       </Container>
       <Footer />

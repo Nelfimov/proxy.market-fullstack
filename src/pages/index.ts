@@ -1,4 +1,4 @@
 export * from './App';
-export * from './About';
+export * from './Contacts';
 export * from './Product';
 export * from './Home';
