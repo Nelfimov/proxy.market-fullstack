@@ -15,7 +15,7 @@ export function CalculatorForm(props: Props) {
           <Form.Group className='mb-3' controlId='type'>
             <Form.Label>Тип прокси:</Form.Label>
             <Form.Select
-              defaultValue=''
+              defaultValue={props.state.type || ''}
               required
               onChange={(e) =>
                 props.action({
@@ -40,7 +40,7 @@ export function CalculatorForm(props: Props) {
           <Form.Group className='mb-3' controlId='country'>
             <Form.Label>Страна</Form.Label>
             <Form.Select
-              defaultValue=''
+              defaultValue={props.state.country || ''}
               required
               onChange={(e) =>
                 props.action({
@@ -65,7 +65,7 @@ export function CalculatorForm(props: Props) {
           <Form.Group className='mb-3' controlId='time'>
             <Form.Label>Срок аренды:</Form.Label>
             <Form.Select
-              defaultValue=''
+              defaultValue={props.state.time || ''}
               required
               onChange={(e) =>
                 props.action({

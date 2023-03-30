@@ -18,7 +18,7 @@ export function App() {
         className={navigation.state === 'loading' ? 'loading' : ''}
       />
       <Container fluid='lg' className='mt-4' style={{ minHeight: '77.5vh' }}>
-        <Outlet context={[state, dispatch]} />
+        <Outlet context={{ state, dispatch }} />
       </Container>
       <Footer />
     </>
