@@ -6,6 +6,6 @@ export interface ActionCart {
 }
 
 export interface ActionPriceList {
-  type: 'SET_TIME' | 'SET_COUNTRY' | 'SET_TYPE' | 'INIT';
+  type: 'INIT';
   payload: QuerySnapshot<DocumentData>;
 }
