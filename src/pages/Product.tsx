@@ -1,14 +1,6 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { Dispatch, useEffect, useState } from 'react';
-import {
-  Button,
-  Card,
-  Col,
-  Collapse,
-  Row,
-  Placeholder,
-  Form,
-} from 'react-bootstrap';
+import { Button, Card, Col, Collapse, Row, Placeholder } from 'react-bootstrap';
 import { NavLink, useOutletContext } from 'react-router-dom';
 import { CalculatorForm } from '../components';
 import { db } from '../firebase';
@@ -33,7 +25,7 @@ export function Product() {
     getDocs(collection(db, 'priceList'))
       .then((res) => {
         priceListDispatch({ type: 'INIT', payload: res });
-        // setLoading(false);
+        setLoading(false);
       })
       .catch((err) => console.error(err));
   }, []);
