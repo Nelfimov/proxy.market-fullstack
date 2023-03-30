@@ -1,6 +1,14 @@
 import { collection, getDocs } from 'firebase/firestore';
-import { Dispatch, useEffect } from 'react';
-import { Button, Card, Col, Collapse, Row } from 'react-bootstrap';
+import { Dispatch, useEffect, useState } from 'react';
+import {
+  Button,
+  Card,
+  Col,
+  Collapse,
+  Row,
+  Placeholder,
+  Form,
+} from 'react-bootstrap';
 import { NavLink, useOutletContext } from 'react-router-dom';
 import { CalculatorForm } from '../components';
 import { db } from '../firebase';
@@ -19,10 +27,14 @@ export function Product() {
       priceListState: PriceListState;
       priceListDispatch: Dispatch<ActionPriceList>;
     }>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getDocs(collection(db, 'priceList'))
-      .then((res) => priceListDispatch({ type: 'INIT', payload: res }))
+      .then((res) => {
+        priceListDispatch({ type: 'INIT', payload: res });
+        // setLoading(false);
+      })
       .catch((err) => console.error(err));
   }, []);
 
@@ -34,12 +46,26 @@ export function Product() {
           <h3>Онлайн калькулятор</h3>
         </Card.Header>
         <Card.Body>
-          <CalculatorForm
-            action={cartDispatch}
-            state={cartState}
-            priceList={priceListState}
-          />
-          <pre>{JSON.stringify(priceListState, undefined, 2)}</pre>
+          {loading ? (
+            <>
+              <Placeholder as={Row} animation='wave'>
+                <Placeholder as={Col} className='m-2' xs={2}></Placeholder>
+                <Placeholder as={Col} className='m-2'></Placeholder>
+                <Placeholder as={Col} className='m-2'></Placeholder>
+              </Placeholder>
+              <Placeholder as={Row} animation='wave' style={{ height: '50px' }}>
+                <Placeholder as={Col} className='m-2'></Placeholder>
+                <Placeholder as={Col} className='m-2'></Placeholder>
+                <Placeholder as={Col} className='m-2'></Placeholder>
+              </Placeholder>
+            </>
+          ) : (
+            <CalculatorForm
+              action={cartDispatch}
+              state={cartState}
+              priceList={priceListState}
+            />
+          )}
         </Card.Body>
         <Collapse in={cartState.total > 0}>
           <Card.Footer>
