@@ -11,4 +11,5 @@ export interface PriceListState {
   country: PriceList;
   time: PriceList;
   type: PriceList;
+  [value: string]: PriceList;
 }

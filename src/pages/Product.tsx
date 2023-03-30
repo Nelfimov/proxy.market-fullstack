@@ -22,14 +22,7 @@ export function Product() {
 
   useEffect(() => {
     getDocs(collection(db, 'priceList'))
-      .then((res) =>
-        res.forEach((item) => {
-          priceListDispatch({
-            type: `SET_${item.id.toUpperCase()}`,
-            payload: item.data(),
-          });
-        })
-      )
+      .then((res) => priceListDispatch({ type: 'INIT', payload: res }))
       .catch((err) => console.error(err));
   }, []);
 

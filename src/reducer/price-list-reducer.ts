@@ -5,23 +5,11 @@ export function priceListReducer(
   action: ActionPriceList
 ) {
   switch (action.type) {
-    case 'SET_COUNTRY': {
-      state.country = action.payload;
-      return {
-        ...state,
-      };
-    }
-    case 'SET_TIME': {
-      state.time = action.payload;
-      return {
-        ...state,
-      };
-    }
-    case 'SET_TYPE': {
-      state.type = action.payload;
-      return {
-        ...state,
-      };
+    case 'INIT': {
+      action.payload.forEach((doc) => {
+        state[doc.id] = doc.data();
+      });
+      return { ...state };
     }
     default:
       return state;
