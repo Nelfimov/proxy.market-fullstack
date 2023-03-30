@@ -1,10 +1,11 @@
 import { Dispatch } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
-import { ActionCart, CartState } from '../types';
+import { ActionCart, CartState, PriceListState } from '../types';
 
 interface Props {
   action: Dispatch<ActionCart>;
   state: CartState;
+  priceList: PriceListState;
 }
 
 export function CalculatorForm(props: Props) {
@@ -21,6 +22,7 @@ export function CalculatorForm(props: Props) {
                 props.action({
                   type: 'SET_TYPE',
                   payload: e.currentTarget.value,
+                  priceList: props.priceList,
                 })
               }
             >
@@ -46,6 +48,7 @@ export function CalculatorForm(props: Props) {
                 props.action({
                   type: 'SET_COUNTRY',
                   payload: e.currentTarget.value,
+                  priceList: props.priceList,
                 })
               }
               disabled={props.state.type === ''}
@@ -71,6 +74,7 @@ export function CalculatorForm(props: Props) {
                 props.action({
                   type: 'SET_TIME',
                   payload: e.currentTarget.value,
+                  priceList: props.priceList,
                 })
               }
               disabled={props.state.country === ''}

@@ -9,4 +9,7 @@ export interface CartState {
 
 export interface PriceListState {
   [value: string]: PriceList;
+  country: PriceList;
+  time: PriceList;
+  type: PriceList;
 }

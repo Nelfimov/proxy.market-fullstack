@@ -34,7 +34,11 @@ export function Product() {
           <h3>Онлайн калькулятор</h3>
         </Card.Header>
         <Card.Body>
-          <CalculatorForm action={cartDispatch} state={cartState} />
+          <CalculatorForm
+            action={cartDispatch}
+            state={cartState}
+            priceList={priceListState}
+          />
           <pre>{JSON.stringify(priceListState, undefined, 2)}</pre>
         </Card.Body>
         <Collapse in={cartState.total > 0}>

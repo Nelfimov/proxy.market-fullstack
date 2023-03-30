@@ -1,5 +1,6 @@
-import { ActionCart, PriceList, CartState } from '../types';
+import { ActionCart, CartState, PriceListState } from '../types';
 
+/*
 const TYPE_PRICE: PriceList = {
   s4i: 60.0,
   s4s: 19.8,
@@ -16,12 +17,14 @@ const COUNTRY_PRICE: PriceList = {
   AU: 236.0,
   AT: 236.0,
 };
+*/
 
-function calculate(state: CartState) {
+function calculate(cartState: CartState, priceListState: PriceListState) {
   return {
     total:
-      (TIME_PRICE[state.time] ?? 1) *
-      ((COUNTRY_PRICE[state.country] ?? 0) + (TYPE_PRICE[state.type] ?? 0)),
+      (priceListState.time[cartState.time] ?? 1) *
+      ((priceListState.country[cartState.country] ?? 0) +
+        (priceListState.type[cartState.type] ?? 0)),
   };
 }
 
@@ -32,7 +35,7 @@ export function cartReducer(state: CartState, action: ActionCart) {
 
       return {
         ...state,
-        ...calculate(state),
+        ...calculate(state, action.priceList),
       };
     }
     case 'SET_TIME': {
@@ -40,7 +43,7 @@ export function cartReducer(state: CartState, action: ActionCart) {
 
       return {
         ...state,
-        ...calculate(state),
+        ...calculate(state, action.priceList),
       };
     }
     case 'SET_TYPE': {
@@ -48,7 +51,7 @@ export function cartReducer(state: CartState, action: ActionCart) {
 
       return {
         ...state,
-        ...calculate(state),
+        ...calculate(state, action.priceList),
       };
     }
     default:
