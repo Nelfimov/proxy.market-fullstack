@@ -1,10 +1,10 @@
 import { Dispatch } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
-import { Action, State } from '../types';
+import { ActionCart, CartState } from '../types';
 
 interface Props {
-  action: Dispatch<Action>;
-  state: State;
+  action: Dispatch<ActionCart>;
+  state: CartState;
 }
 
 export function CalculatorForm(props: Props) {

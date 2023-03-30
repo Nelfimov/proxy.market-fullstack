@@ -1,23 +1,8 @@
-interface PriceListState {
-  country: {
-    [name: string]: number;
-  };
-  time: {
-    [name: string]: number;
-  };
-  type: {
-    [name: string]: number;
-  };
-}
-
-interface PriceListAction {
-  type: 'INIT' | 'SET_TIME' | 'SET_COUNTRY' | 'SET_TYPE';
-  payload: { [name: string]: number };
-}
+import { ActionPriceList, PriceListState } from '../types';
 
 export function priceListReducer(
   state: PriceListState,
-  action: PriceListAction
+  action: ActionPriceList
 ) {
   switch (action.type) {
     case 'SET_COUNTRY': {

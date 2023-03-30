@@ -1,17 +1,25 @@
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { Dispatch, useEffect } from 'react';
 import { Button, Card, Col, Collapse, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useOutletContext } from 'react-router-dom';
 import { CalculatorForm } from '../components';
 import { db } from '../firebase';
-import { Action, State } from '../types';
+import {
+  ActionCart,
+  CartState,
+  ActionPriceList,
+  PriceListState,
+} from '../types';
 
 export function Product() {
-  const { state, dispatch } = useOutletContext<{
-    state: State;
-    dispatch: Dispatch<Action>;
-  }>();
+  const { cartState, cartDispatch, priceListState, priceListDispatch } =
+    useOutletContext<{
+      cartState: CartState;
+      cartDispatch: Dispatch<ActionCart>;
+      priceListState: PriceListState;
+      priceListDispatch: Dispatch<ActionPriceList>;
+    }>();
 
   useEffect(() => {
     const result = getDocs(collection(db, 'priceList')).then((res) =>
@@ -27,9 +35,9 @@ export function Product() {
           <h3>Онлайн калькулятор</h3>
         </Card.Header>
         <Card.Body>
-          <CalculatorForm action={dispatch} state={state} />
+          <CalculatorForm action={cartDispatch} state={cartState} />
         </Card.Body>
-        <Collapse in={state.total > 0}>
+        <Collapse in={cartState.total > 0}>
           <Card.Footer>
             <Row className='align-items-center'>
               <Col>
@@ -40,7 +48,7 @@ export function Product() {
                   {Intl.NumberFormat(navigator.language, {
                     style: 'currency',
                     currency: 'RUB',
-                  }).format(state.total)}
+                  }).format(cartState.total)}
                 </h3>
               </Col>
               <Col>

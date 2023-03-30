@@ -1,4 +1,4 @@
-import { Action, PriceList, State } from '../types';
+import { ActionCart, PriceList, CartState } from '../types';
 
 const TYPE_PRICE: PriceList = {
   s4i: 60.0,
@@ -17,7 +17,7 @@ const COUNTRY_PRICE: PriceList = {
   AT: 236.0,
 };
 
-function calculate(state: State) {
+function calculate(state: CartState) {
   return {
     total:
       (TIME_PRICE[state.time] ?? 1) *
@@ -25,7 +25,7 @@ function calculate(state: State) {
   };
 }
 
-export function reducer(state: State, action: Action) {
+export function cartReducer(state: CartState, action: ActionCart) {
   switch (action.type) {
     case 'SET_COUNTRY': {
       state.country = action.payload;
