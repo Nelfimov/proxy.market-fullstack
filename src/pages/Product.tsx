@@ -41,14 +41,14 @@ export function Product() {
           {loading ? (
             <>
               <Placeholder as={Row} animation='wave'>
-                <Placeholder as={Col} className='m-2' xs={2}></Placeholder>
-                <Placeholder as={Col} className='m-2'></Placeholder>
-                <Placeholder as={Col} className='m-2'></Placeholder>
+                <Placeholder as={Col} className='m-3' xs={2}></Placeholder>
+                <Placeholder as={Col} className='m-3'></Placeholder>
+                <Placeholder as={Col} className='m-3'></Placeholder>
               </Placeholder>
               <Placeholder as={Row} animation='wave' style={{ height: '50px' }}>
-                <Placeholder as={Col} className='m-2'></Placeholder>
-                <Placeholder as={Col} className='m-2'></Placeholder>
-                <Placeholder as={Col} className='m-2'></Placeholder>
+                <Placeholder as={Col} className='m-3'></Placeholder>
+                <Placeholder as={Col} className='m-3'></Placeholder>
+                <Placeholder as={Col} className='m-3'></Placeholder>
               </Placeholder>
             </>
           ) : (
@@ -74,11 +74,19 @@ export function Product() {
                 </h3>
               </Col>
               <Col>
-                <NavLink to='/cart'>
-                  <Button size='lg' style={{ width: '100%' }}>
-                    Оформить заказ:
-                  </Button>
-                </NavLink>
+                {loading ? (
+                  <Placeholder.Button
+                    xs={12}
+                    animation='wave'
+                    style={{ height: '35px' }}
+                  />
+                ) : (
+                  <NavLink to='/cart'>
+                    <Button size='lg' style={{ width: '100%' }}>
+                      Оформить заказ:
+                    </Button>
+                  </NavLink>
+                )}
               </Col>
             </Row>
           </Card.Footer>
