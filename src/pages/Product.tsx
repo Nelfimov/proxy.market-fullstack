@@ -1,8 +1,10 @@
-import { Dispatch } from 'react';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { Dispatch, useEffect } from 'react';
 import { Button, Card, Col, Collapse, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useOutletContext } from 'react-router-dom';
 import { CalculatorForm } from '../components';
+import { db } from '../firebase';
 import { Action, State } from '../types';
 
 export function Product() {
@@ -10,6 +12,12 @@ export function Product() {
     state: State;
     dispatch: Dispatch<Action>;
   }>();
+
+  useEffect(() => {
+    const result = getDocs(collection(db, 'priceList')).then((res) =>
+      res.forEach((item) => console.log(item.id + item.data()))
+    );
+  }, []);
 
   return (
     <>
