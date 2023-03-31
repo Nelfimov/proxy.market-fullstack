@@ -11,7 +11,7 @@ import {
   PriceListState,
 } from '../types';
 
-export function Product() {
+export function Component() {
   const { cartState, cartDispatch, priceListState, priceListDispatch } =
     useOutletContext<{
       cartState: CartState;
@@ -101,3 +101,5 @@ export function Product() {
     </>
   );
 }
+
+Component.displayName = 'Product';

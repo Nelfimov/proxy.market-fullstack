@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { Suspense, useReducer } from 'react';
 import { Container } from 'react-bootstrap';
 import { Outlet, useNavigation } from 'react-router-dom';
 import { Footer, NavBar } from '../components';
@@ -23,14 +23,16 @@ export function App() {
         className={navigation.state === 'loading' ? 'loading' : ''}
       />
       <Container fluid='lg' className='mt-4' style={{ minHeight: '77.5vh' }}>
-        <Outlet
-          context={{
-            cartState,
-            cartDispatch,
-            priceListState,
-            priceListDispatch,
-          }}
-        />
+        <Suspense fallback={<div id='transition' className='loading' />}>
+          <Outlet
+            context={{
+              cartState,
+              cartDispatch,
+              priceListState,
+              priceListDispatch,
+            }}
+          />
+        </Suspense>
       </Container>
       <Footer />
     </>

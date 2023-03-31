@@ -3,7 +3,7 @@ import mail from '../assets/mail.svg';
 import telegram from '../assets/telegram.svg';
 import skype from '../assets/skype.svg';
 
-export function Contacts() {
+export function Component() {
   return (
     <>
       <h1>Контакты</h1>
@@ -69,3 +69,5 @@ export function Contacts() {
     </>
   );
 }
+
+Component.displayName = 'Contacts';

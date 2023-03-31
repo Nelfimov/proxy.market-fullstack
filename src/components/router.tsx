@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { App, Home, Product, Contacts, Cart } from '../pages';
+import { App, Home } from '../pages';
 
 export const router = createBrowserRouter(
   [
@@ -13,15 +13,15 @@ export const router = createBrowserRouter(
         },
         {
           path: '/buy-proxie',
-          element: <Product />,
+          lazy: () => import('../pages/Product'),
         },
         {
           path: '/contacts',
-          element: <Contacts />,
+          lazy: () => import('../pages/Contacts'),
         },
         {
           path: '/cart',
-          element: <Cart />,
+          lazy: () => import('../pages/Cart'),
         },
       ],
     },

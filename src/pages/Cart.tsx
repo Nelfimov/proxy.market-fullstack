@@ -1,6 +1,6 @@
 import { Card, Placeholder } from 'react-bootstrap';
 
-export function Cart() {
+export function Component() {
   return (
     <>
       <h1>Корзина</h1>
@@ -25,3 +25,5 @@ export function Cart() {
     </>
   );
 }
+
+Component.displayName = 'Cart';
